@@ -51,25 +51,25 @@ export default {
           { min: 3, max: 10, message: '长度在 3 到 10 个字符', trigger: 'blur' }
         ],
         password: [
-          { requried: true, message: '请输入登录密码', trigger: 'blur' },
-          { min: 6, max: 15, message: '长度在 6 到 15 个字符', trigger: 'blur' }
+          { required: true, message: '请输入登录密码', trigger: 'blur' },
+          { min: 6, max: 25, message: '长度在 6 到 25 个字符', trigger: 'blur' }
         ]
       }
     }
   },
   methods: {
     login(formName) {
-      this.$refs[formName].validate(valid => {
-        this.$router.push('/home')
-        // if (!valid) { return }
-        // const { data: res } = await this.$http.post('login', this.loginForm)
-        // if (res.meta.status !== 200) {
-        //   return this.$message.error('登录失败！')
-        // }
-        // this.$message.success('登录成功')
-        // console.log(res)
-        // window.sessionStorage.setItem('token', res.data.token)
+      this.$refs[formName].validate(async valid => {
         // this.$router.push('/home')
+        if (!valid) { return }
+        const { data: res } = await this.$http.post('login', this.loginForm)
+        if (res.meta.status !== 200) {
+          return this.$message.error('登录失败！')
+        }
+        console.log(11111111111111, res)
+        this.$message.success('登录成功')
+        window.sessionStorage.setItem('token', res.data.token)
+        await this.$router.push('/home')
       })
     },
     resetForm(formName) {
