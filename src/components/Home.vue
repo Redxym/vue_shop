@@ -45,6 +45,7 @@
         </el-menu>
       </el-aside>
       <el-main>
+        <!--主页面-->
         <router-view></router-view>
       </el-main>
     </el-container>
