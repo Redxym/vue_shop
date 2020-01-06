@@ -66,7 +66,6 @@ export default {
         if (res.meta.status !== 200) {
           return this.$message.error('登录失败！')
         }
-        console.log(11111111111111, res)
         this.$message.success('登录成功')
         window.sessionStorage.setItem('token', res.data.token)
         await this.$router.push('/home')
