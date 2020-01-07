@@ -72,7 +72,6 @@
         <el-form-item label="父级对象：">
           <!--options指定数据源 cascaderProps用来指定配置对象-->
           <el-cascader
-            expand-trigger="hover"
             :options="parentCateList"
             :props="cascaderProps"
             v-model="selectedKeys"
