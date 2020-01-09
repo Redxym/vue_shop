@@ -261,10 +261,8 @@ export default {
           this.addForm.attrs.push(newInfo)
         })
         form.attrs = this.addForm.attrs
-        console.log(form)
         // 发请求添加商品，商品名称必须唯一
         const { data: res } = await this.$http.post('goods', form)
-        console.log(11111, res)
         if (res.meta.status !== 201) {
           return this.$message.error('添加商品失败')
         }
